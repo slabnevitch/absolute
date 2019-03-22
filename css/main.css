@@ -3006,6 +3006,19 @@ ul, li {
       background-color: transparent; }
     .button-inverse:active {
       background-color: transparent; }
+  .button-empty {
+    width: 166px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    background-color: transparent; }
+    .button-empty:hover {
+      color: #68A7CF;
+      background-color: #fff; }
+    .button-empty:active {
+      color: #000;
+      border-color: #000;
+      background-color: #FEC947; }
 
 .toggle-mnu {
   display: block;
@@ -3421,11 +3434,9 @@ ul, li {
           color: #fff;
           text-transform: uppercase;
           text-decoration: none; }
-          .header .header-top .header-menu li a:hover {
-            color: #68A7CF; }
-          .header .header-top .header-menu li a:active {
+          .header .header-top .header-menu li a:active, .header .header-top .header-menu li a:hover {
             color: #E2B33F; }
-          .header .header-top .header-menu li a.sf-with-ul:hover {
+          .header .header-top .header-menu li a.sf-with-ul:hover, .header .header-top .header-menu li a.sf-with-ul:active {
             color: #E2B33F; }
         .header .header-top .header-menu li:first-child {
           margin-left: 0; }
@@ -3680,6 +3691,8 @@ ul, li {
             text-decoration: none;
             color: #E2B33F;
             text-transform: uppercase; }
+            .header .header-hd-menu .header-hd-menu__left .header-hd-menu__column .header-hd-menu__block .header-hd-menu__main:hover, .header .header-hd-menu .header-hd-menu__left .header-hd-menu__column .header-hd-menu__block .header-hd-menu__main:active {
+              color: #68A7CF; }
           .header .header-hd-menu .header-hd-menu__left .header-hd-menu__column .header-hd-menu__block .header-hd-menu__list li {
             list-style-type: none; }
           .header .header-hd-menu .header-hd-menu__left .header-hd-menu__column .header-hd-menu__block .header-hd-menu__list .header-hd-menu__item {
@@ -4380,6 +4393,56 @@ ul, li {
         text-align: center; }
 
 /*--end certificados--*/
+/*--ceo--*/
+.ceo {
+  padding-top: 7.11111rem;
+  padding-bottom: 4.77778rem; }
+  .ceo .wrapper {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .ceo .wrapper .title-wrapper {
+      width: -webkit-calc(100% - 30px);
+      width: calc(100% - 30px); }
+      .ceo .wrapper .title-wrapper h2 {
+        margin-bottom: 2.88889rem;
+        color: #000; }
+    .ceo .wrapper .ceo-content {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      margin-left: 15px;
+      margin-right: 15px;
+      word-wrap: break-word;
+      width: -webkit-calc(77.77778% - 30px);
+      width: calc(77.77778% - 30px);
+      margin-bottom: 2.66667rem;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between; }
+      .ceo .wrapper .ceo-content .ceo-content__item {
+        width: 49%;
+        font-family: "RobotoLight", sans-serif;
+        line-height: 25px; }
+    .ceo .wrapper .ceo-bottom {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      margin-left: 15px;
+      margin-right: 15px;
+      word-wrap: break-word;
+      width: -webkit-calc(100% - 30px);
+      width: calc(100% - 30px);
+      text-align: center; }
+
+/*--end ceo--*/
 /*--questions--*/
 .questions {
   padding-top: 6.05556rem;
@@ -4555,6 +4618,8 @@ ul, li {
       font-family: "RobotoLight", sans-serif;
       line-height: 20px;
       color: #E2B33F; }
+      .history .history-content .history-item__links a:hover, .history .history-content .history-item__links a:active {
+        color: #68A7CF; }
     .history .history-content .history-item__text .button {
       position: absolute;
       bottom: 30px;
@@ -4667,8 +4732,14 @@ ul, li {
     .footer .wrapper .footer-column__block {
       margin-bottom: 2.5rem; }
     .footer .wrapper .footer-title {
+      display: inline-block;
+      text-decoration: none;
       margin-bottom: 10px;
-      font-family: "RobotoLight", sans-serif; }
+      font-family: "RobotoLight", sans-serif;
+      color: #fff; }
+      .footer .wrapper .footer-title:hover, .footer .wrapper .footer-title:active {
+        text-decoration: underline;
+        color: #68A7CF; }
     .footer .wrapper .footer-menu li {
       list-style-type: none;
       margin-bottom: 10px; }
