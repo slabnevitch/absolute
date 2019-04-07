@@ -3683,7 +3683,7 @@ ul, li {
 /*--header--*/
 .header {
   position: relative;
-  z-index: 2; }
+  z-index: 3; }
   .header .header-top {
     padding-top: 19px;
     padding-bottom: 14px;
@@ -5106,6 +5106,17 @@ ul, li {
         padding-bottom: 21px; }
       .calculation .wrapper .abs-form .button {
         margin-top: 8px; }
+  .calculation--light {
+    background: none;
+    background-color: #E4FAFF; }
+    .calculation--light .wrapper .title-wrapper {
+      color: #000; }
+      .calculation--light .wrapper .title-wrapper h2 {
+        color: #000; }
+      .calculation--light .wrapper .title-wrapper .abs-subtitle {
+        color: #000; }
+    .calculation--light .wrapper .abs-form .abs-form-label-name {
+      color: #000; }
 
 /*--calculation--*/
 /*--diler--*/
