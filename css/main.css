@@ -3053,6 +3053,8 @@ ul, li {
       color: #000;
       border-color: #000;
       background-color: #FEC947; }
+  .button-active-to-wt:active {
+    background-color: #fff; }
 
 .toggle-mnu {
   display: block;
@@ -3441,15 +3443,18 @@ ul, li {
 
 .slick-prev {
   background-image: url(../img/svg/slider-prev.svg); }
-  .slick-prev:hover, .slick-prev:active {
+  .slick-prev:hover, .slick-prev:active, .slick-prev:focus {
     background-size: 100%;
     background: url(../img/svg/slider-prev-hover.svg) center no-repeat; }
 
 .slick-next {
   background-image: url(../img/svg/slider-next.svg); }
-  .slick-next:hover, .slick-next:active {
+  .slick-next:hover, .slick-next:active, .slick-next:focus {
     background-size: 100%;
     background: url(../img/svg/slider-next-hover.svg) center no-repeat; }
+
+.slick-slide:focus {
+  outline: 0 none; }
 
 .abs-product-card {
   width: 100%;
@@ -3458,7 +3463,8 @@ ul, li {
   background-color: #fff;
   -webkit-box-shadow: 0px 10px 20px rgba(67, 180, 221, 0.5);
   box-shadow: 0px 10px 20px rgba(67, 180, 221, 0.5);
-  text-align: center; }
+  text-align: center;
+  border: 2px solid transparent; }
   .abs-product-card .abs-product-card__img-wrap {
     position: relative;
     height: 356px;
@@ -3486,6 +3492,19 @@ ul, li {
     font-family: "RobotoBold", sans-serif; }
   .abs-product-card .button {
     font-family: "RobotoBlack", sans-serif; }
+  .abs-product-card:hover {
+    border-color: #68A7CF;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+    .abs-product-card:hover .button {
+      color: #fff; }
+    .abs-product-card:hover .abs-product-card__price {
+      color: #68A7D0; }
+  .abs-product-card:active .button {
+    color: #000;
+    background-color: transparent; }
+  .abs-product-card:active .abs-product-card__price {
+    color: #000; }
 
 .company-item__icon, .timeframe .timeframe-content .timeframe-column .timeframe-item__icon, .construction .construction-content .construction-item__icon {
   position: relative;
@@ -4930,15 +4949,42 @@ ul, li {
       word-wrap: break-word;
       width: -webkit-calc(94.44444% - 30px);
       width: calc(94.44444% - 30px); }
+      .spec-actions .wrapper .spec-actions__content .slick-prev {
+        left: -35px; }
+      .spec-actions .wrapper .spec-actions__content .slick-next {
+        right: -35px; }
       .spec-actions .wrapper .spec-actions__content .spec-actions__item {
         display: block;
         text-align: center; }
-        .spec-actions .wrapper .spec-actions__content .spec-actions__item:hover .spec-actions__caption, .spec-actions .wrapper .spec-actions__content .spec-actions__item:active .spec-actions__caption {
-          color: #68A7CF; }
+        .spec-actions .wrapper .spec-actions__content .spec-actions__item:hover, .spec-actions .wrapper .spec-actions__content .spec-actions__item:active {
+          text-decoration: none; }
+          .spec-actions .wrapper .spec-actions__content .spec-actions__item:hover .spec-actions__caption, .spec-actions .wrapper .spec-actions__content .spec-actions__item:active .spec-actions__caption {
+            color: #68A7CF;
+            text-decoration: underline; }
       .spec-actions .wrapper .spec-actions__content .spec-actions__img-wrap {
         position: relative;
         height: 376px;
-        margin-bottom: 33px; }
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 458px;
+        margin-bottom: 33px;
+        overflow: hidden; }
+      .spec-actions .wrapper .spec-actions__content .spec-actions__sale {
+        height: 190px;
+        width: 190px;
+        position: absolute;
+        top: -95px;
+        right: -95px;
+        background-color: #FEC947;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        z-index: 1;
+        font-size: 36px;
+        font-family: "RobotoBold", sans-serif;
+        text-align: center;
+        line-height: 300px;
+        color: #000; }
       .spec-actions .wrapper .spec-actions__content .spec-actions__img {
         display: block;
         max-width: 100%;
@@ -5923,7 +5969,7 @@ ul, li {
       .model-product .wrapper .model-product__info .model-product__price-block .model-product__price {
         font-size: 36px;
         font-family: "RobotoBold", sans-serif; }
-  .model-product .wrapper .model-product__features-content {
+  .model-product .wrapper .model-product__features-row {
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
@@ -5935,15 +5981,26 @@ ul, li {
     margin-right: -15px;
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
-    flex-wrap: wrap; }
-    .model-product .wrapper .model-product__features-content .abs-marked-list {
+    flex-wrap: wrap;
+    margin-bottom: 1rem; }
+    .model-product .wrapper .model-product__features-row .model-product__features-item {
       width: -webkit-calc(50% - 30px);
       width: calc(50% - 30px);
       margin-left: 15px;
-      margin-right: 15px; }
-      .model-product .wrapper .model-product__features-content .abs-marked-list li {
-        margin-bottom: 1rem;
-        text-transform: uppercase; }
+      margin-right: 15px;
+      position: relative;
+      padding-left: 25px;
+      text-transform: uppercase; }
+      .model-product .wrapper .model-product__features-row .model-product__features-item:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 7px;
+        left: 0;
+        width: 19px;
+        height: 10px;
+        background: url(../img/svg/list-mark.svg) 0 0 no-repeat;
+        background-size: 100%; }
   .model-product .wrapper .model-product__features-title {
     margin-bottom: 1.44444rem;
     font-size: 1.33333rem;
@@ -5983,6 +6040,8 @@ ul, li {
         text-transform: uppercase; }
     .parameters .wrapper .parameters-wrap .abs-tabs-content {
       padding: 68px 3.77778rem 0 3.77778rem; }
+    .parameters .wrapper .parameters-wrap .parameters-content--padded {
+      padding-bottom: 2.22222rem; }
     .parameters .wrapper .parameters-wrap .parameters-content__header {
       margin-bottom: 2rem; }
     .parameters .wrapper .parameters-wrap .parameters-content__title {
