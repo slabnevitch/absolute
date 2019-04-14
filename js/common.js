@@ -13,6 +13,25 @@ jQuery(function() {
 			 }
 		});
 
+		// stickyHeader headhesive
+			var headhesiveOptions = {
+					offset: 100,
+					offsetSide: 'top',
+					classes: {
+						clone:   'banner--clone header--fixed',
+						stick:   'banner--stick',
+						unstick: 'banner--unstick'
+					},
+					onInit: function () {
+						$(this.clonedElem).find('[data-src]').Lazy();
+					},
+			};
+
+			var headhesive  = new Headhesive('.header', headhesiveOptions);
+
+		// end stickyHeader headhesive
+
+
 		// submit-to-thanks
 			$(".submit-to-thanks").submit(function(e) { //Change
 				e.preventDefault();
@@ -242,27 +261,7 @@ jQuery(function() {
 		// section HISTORY
 		var objectDisplayOpt = {
 			dots: false,
-			arrows: false,
-			responsive: [
-
-			{
-				breakpoint: 560,
-				settings: {
-
-					slidesPerRow: 2
-
-				}	
-			},
-			{
-				breakpoint: 400,
-				settings: {
-
-					rows: 1,
-					slidesPerRow: 1
-
-				}	
-			}
-			]
+			arrows: false
 		};
 
 		var objectNavOpt = {
@@ -273,20 +272,23 @@ jQuery(function() {
 			responsive: [
 
 			{
-				breakpoint: 560,
+				breakpoint: 800,
 				settings: {
 
-					slidesPerRow: 2
+					slidesToShow: 2
 
 				}	
 			},
 			{
-				breakpoint: 400,
+				breakpoint: 769,
 				settings: {
-
-					rows: 1,
-					slidesPerRow: 1
-
+					slidesToShow: 3
+				}	
+			},
+			{
+				breakpoint: 376,
+				settings: {
+					slidesToShow: 2
 				}	
 			}
 			]
@@ -333,19 +335,18 @@ jQuery(function() {
 			responsive: [
 
 			{
-				breakpoint: 560,
+				breakpoint: 1560,
 				settings: {
 
-					slidesPerRow: 2
+					slidesToShow: 2,
 
 				}	
 			},
 			{
-				breakpoint: 400,
+				breakpoint: 1100,
 				settings: {
 
-					rows: 1,
-					slidesPerRow: 1
+					slidesToShow: 1,
 
 				}	
 			}
@@ -360,19 +361,26 @@ jQuery(function() {
 			responsive: [
 
 			{
-				breakpoint: 560,
+				breakpoint: 1700,
 				settings: {
 
-					// slidesPerRow: 2
+					slidesToShow: 3,
 
 				}	
 			},
 			{
-				breakpoint: 400,
+				breakpoint: 1300,
 				settings: {
 
-					rows: 1
-					// slidesPerRow: 1
+					slidesToShow: 2,
+
+				}	
+			},
+			{
+				breakpoint: 870,
+				settings: {
+
+					slidesToShow: 1,
 
 				}	
 			}
@@ -383,27 +391,7 @@ jQuery(function() {
 		// section INSTALLATION
 			$('.installation-display').slick({
 				slidesToScroll: 1,
-				arrows: false,
-				responsive: [
-
-				{
-					breakpoint: 560,
-					settings: {
-
-						slidesPerRow: 2
-
-					}	
-				},
-				{
-					breakpoint: 400,
-					settings: {
-
-						rows: 1,
-						slidesPerRow: 1
-
-					}	
-				}
-				]
+				arrows: false
 			});
 
 			$('.installation-nav').slick({
@@ -416,20 +404,43 @@ jQuery(function() {
 				responsive: [
 
 				{
-					breakpoint: 560,
+					breakpoint: 1600,
 					settings: {
 
-						slidesPerRow: 2
+						slidesToShow: 4,
 
 					}	
 				},
 				{
-					breakpoint: 400,
+					breakpoint: 1200,
 					settings: {
+						slidesToShow: 3,
 
-						rows: 1,
-						slidesPerRow: 1
-
+					}	
+				},
+				{
+					breakpoint: 981,
+					settings: {
+						slidesToShow: 5
+					}	
+				},
+				{
+					breakpoint: 769,
+					settings: {
+					}	
+				},
+				{
+					breakpoint: 561,
+					settings: {
+						arrows: false,
+						slidesToShow: 4
+					}	
+				},
+				{
+					breakpoint: 376,
+					settings: {
+						arrows: false,
+						slidesToShow: 3
 					}	
 				}
 				]
@@ -483,7 +494,10 @@ jQuery(function() {
 			var $th = $(this),
 			$href = $th.attr('href'),
 			$parent = $th.parent(),
-			$parentContainer = $th.closest('.tabs');
+			$parentContainer = $th.closest('.tabs'),
+			$currentContentTab = $('.parameters-wrap .tabs__content').find($href);
+
+			console.log($currentContentTab);
 
 			$parent.addClass('tabs__item--active')
 			.siblings()
@@ -491,9 +505,42 @@ jQuery(function() {
 
 			$parentContainer
 			.find($($href))
-			.removeClass('hidden')
+			.addClass('active')
 			.siblings()
-			.addClass('hidden');
+			.removeClass('active');
+
+			$currentContentTab.find('.parameters-tabs-toggle')
+				.addClass('active');
+			
+			$currentContentTab.siblings()
+				.find('.parameters-tabs-toggle')
+				.removeClass('active');
+		});
+
+
+		$('.parameters-tabs-toggle').click(function() {
+			var $th = $(this),
+			$thParent = $th.closest('.tabs__item'),
+			$thMirrorHref = '#' + $thParent.attr('id'),
+			$thMirror = $('.parameters-wrap .tabs__list').find('[href=' + $thMirrorHref +']');
+
+			// console.log($thMirrorHref );
+
+			$th.toggleClass('active');
+			$thParent
+			.toggleClass('active')
+			.siblings()
+			.removeClass('active')
+			.find('.parameters-tabs-toggle')
+			.removeClass('active');
+
+			$thMirror
+			.closest('.abs-tabs-item')
+			.addClass('tabs__item--active')
+			.siblings()
+			.removeClass('tabs__item--active');
+
+			return false;
 		});
 
 		// end tabs
@@ -536,20 +583,29 @@ jQuery(function() {
 			responsive: [
 
 			{
-				breakpoint: 560,
+				breakpoint: 1600,
 				settings: {
 
-					slidesPerRow: 2
+					slidesToShow: 3
 
 				}	
 			},
 			{
-				breakpoint: 400,
+				breakpoint: 1100,
 				settings: {
-
-					rows: 1,
-					slidesPerRow: 1
-
+					slidesToShow: 2
+				}	
+			},
+			{
+				breakpoint: 769,
+				settings: {
+					slidesToShow: 3
+				}	
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					slidesToShow: 2
 				}	
 			}
 			]
