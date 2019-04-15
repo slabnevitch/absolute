@@ -509,20 +509,20 @@ jQuery(function() {
 			.siblings()
 			.removeClass('active');
 
-			$currentContentTab.find('.parameters-tabs-toggle')
+			$currentContentTab.find('.tabs-mob-toggle')
 				.addClass('active');
 			
 			$currentContentTab.siblings()
-				.find('.parameters-tabs-toggle')
+				.find('.tabs-mob-toggle')
 				.removeClass('active');
 		});
 
 
-		$('.parameters-tabs-toggle').click(function() {
+		$('.tabs-mob-toggle').click(function() {
 			var $th = $(this),
 			$thParent = $th.closest('.tabs__item'),
 			$thMirrorHref = '#' + $thParent.attr('id'),
-			$thMirror = $('.parameters-wrap .tabs__list').find('[href=' + $thMirrorHref +']');
+			$thMirror = $('.tabs .tabs__list').find('[href=' + $thMirrorHref +']');
 
 			// console.log($thMirrorHref );
 
@@ -531,11 +531,11 @@ jQuery(function() {
 			.toggleClass('active')
 			.siblings()
 			.removeClass('active')
-			.find('.parameters-tabs-toggle')
+			.find('.tabs-mob-toggle')
 			.removeClass('active');
 
 			$thMirror
-			.closest('.abs-tabs-item')
+			.closest('.tabs__item')
 			.addClass('tabs__item--active')
 			.siblings()
 			.removeClass('tabs__item--active');
