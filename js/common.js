@@ -21,10 +21,10 @@ jQuery(function() {
 						clone:   'banner--clone header--fixed',
 						stick:   'banner--stick',
 						unstick: 'banner--unstick'
-					},
-					onInit: function () {
-						$(this.clonedElem).find('[data-src]').Lazy();
-					},
+					}
+					// onInit: function () {
+					// 	$(this.clonedElem).find('[data-src]').Lazy();
+					// },
 			};
 
 			var headhesive  = new Headhesive('.header', headhesiveOptions);
@@ -520,25 +520,44 @@ jQuery(function() {
 
 		$('.tabs-mob-toggle').click(function() {
 			var $th = $(this),
-			$thParent = $th.closest('.tabs__item'),
-			$thMirrorHref = '#' + $thParent.attr('id'),
-			$thMirror = $('.tabs .tabs__list').find('[href=' + $thMirrorHref +']');
+				$thParent = $th.closest('.tabs__item'),
+				heightHeader = $('.header').outerHeight(),
+				$thMirrorHref = '#' + $thParent.attr('id'),
+				$thMirror = $('.tabs .tabs__list').find('[href=' + $thMirrorHref +']');
 
-			// console.log($thMirrorHref );
 
 			$th.toggleClass('active');
 			$thParent
-			.toggleClass('active')
+			// .toggleClass('active')
 			.siblings()
-			.removeClass('active')
+			// .removeClass('active')
 			.find('.tabs-mob-toggle')
 			.removeClass('active');
+
+			$thParent
+				.find('.tabs-mob-content')
+				.slideToggle(200, function() {
+					console.log('currentslide toggle');
+					var $tabsTop = $th.offset().top;
+
+					// $('html, body').animate({scrollTop: $tabsTop - heightHeader - 30}, 100);
+				});
+
+			$thParent
+				.siblings()
+				.find('.tabs-mob-content')
+				.slideUp( function() {
+					console.log('currentslide up');
+					var $tabsTop = $th.offset().top;
+					$('html, body').animate({scrollTop: $tabsTop - heightHeader - 30}, 10);
+				});
 
 			$thMirror
 			.closest('.tabs__item')
 			.addClass('tabs__item--active')
 			.siblings()
 			.removeClass('tabs__item--active');
+			
 
 			return false;
 		});
